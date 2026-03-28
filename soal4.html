@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Luas Bangun Datar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            width: 150px;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Kalkulator Luas Bangun Datar</h2>
+    
+    <!-- Input Nilai -->
+    <label for="nilai1">Nilai 1 (Sisi/Panjang/Alas/Jari-jari):</label><br>
+    <input type="number" id="nilai1" min="0" placeholder="Masukkan angka"><br>
+    
+    <label for="nilai2">Nilai 2 (Lebar/Tinggi - kosongkan jika tidak perlu):</label><br>
+    <input type="number" id="nilai2" min="0" placeholder="Masukkan angka"><br>
+    
+    <!-- Tombol Operasi -->
+    <button onclick="hitungLuas('persegi')">Luas Persegi</button>
+    <button onclick="hitungLuas('persegi-panjang')">Luas Persegi Panjang</button>
+    <button onclick="hitungLuas('segitiga')">Luas Segitiga</button>
+    <button onclick="hitungLuas('lingkaran')">Luas Lingkaran</button>
+    
+    <!-- Tempat Tampil Hasil -->
+    <p id="hasilPerhitungan"></p>
+
+    <script>
+        function hitungLuas(bangunDatar) {
+            // Ambil nilai dari input dan ubah ke tipe angka
+            let nilai1 = parseFloat(document.getElementById('nilai1').value) || 0;
+            let nilai2 = parseFloat(document.getElementById('nilai2').value) || 0;
+            let hasil;
+            let pesan;
+
+            // Proses perhitungan sesuai bangun datar
+            switch(bangunDatar) {
+                case 'persegi':
+                    hasil = nilai1 * nilai1;
+                    pesan = `Luas Persegi: ${hasil.toFixed(2)}`;
+                    break;
+                case 'persegi-panjang':
+                    hasil = nilai1 * nilai2;
+                    pesan = `Luas Persegi Panjang: ${hasil.toFixed(2)}`;
+                    break;
+                case 'segitiga':
+                    hasil = 0.5 * nilai1 * nilai2;
+                    pesan = `Luas Segitiga: ${hasil.toFixed(2)}`;
+                    break;
+                case 'lingkaran':
+                    hasil = Math.PI * nilai1 * nilai1;
+                    pesan = `Luas Lingkaran: ${hasil.toFixed(2)}`;
+                    break;
+                default:
+                    pesan = 'Pilih jenis bangun datar yang benar!';
+            }
+
+            // Tampilkan hasil ke elemen <p>
+            document.getElementById('hasilPerhitungan').textContent = pesan;
+        }
+    </script>
+</body>
+</html>
