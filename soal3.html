@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- Input angka dan tombol -->
+<input type="number" id="angka1" placeholder="Masukkan angka pertama">
+<input type="number" id="angka2" placeholder="Masukkan angka kedua">
+<button onclick="hitungJumlah()">Hitung</button>
+
+<!-- Tempat tampil hasil -->
+<p id="hasilPenjumlahan"></p>
+
+<script>
+function hitungJumlah() {
+    // Ambil nilai dari input
+    let angka1 = parseFloat(document.getElementById("angka1").value);
+    let angka2 = parseFloat(document.getElementById("angka2").value);
+    
+    // Lakukan penjumlahan
+    let hasil = angka1 + angka2;
+    
+    // Tampilkan hasil ke elemen <p>
+    document.getElementById("hasilPenjumlahan").innerHTML = "Hasil: " + hasil;
+}
+</script>
+
+</body>
+</html>
